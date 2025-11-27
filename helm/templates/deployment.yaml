@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-challenge
+  namespace: devops-challenge
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: devops-challenge
+  template:
+    metadata:
+      labels:
+        app: devops-challenge
+    spec:
+      # Pod-level security context if desired
+      containers:
+        - name: devops-challenge
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: {{ .Values.podSecurity.runAsUser }}
+            runAsNonRoot: {{ .Values.podSecurity.runAsNonRoot }}
+            readOnlyRootFilesystem: {{ .Values.podSecurity.readOnlyRootFilesystem }}
+            capabilities:
+              add: {{ toYaml .Values.podSecurity.capabilities.add | nindent 14 }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
