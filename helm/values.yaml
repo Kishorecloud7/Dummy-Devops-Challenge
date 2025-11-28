@@ -1,9 +1,10 @@
 replicaCount: 1
 
 image:
-  repository: devops-challenge-image
-  tag: "latest"
+  repository: kishorecloud7/devops-challenge
+  tag: latest
   pullPolicy: IfNotPresent
+
 
 service:
   type: ClusterIP
