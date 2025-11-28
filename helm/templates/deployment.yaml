@@ -1,35 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops-challenge
-  namespace: devops-challenge
+  name: {{ .Release.Name }}-app
+  labels:
+    app: {{ .Release.Name }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicas | default 1 }}
   selector:
     matchLabels:
-      app: devops-challenge
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: devops-challenge
+        app: {{ .Release.Name }}
     spec:
       containers:
-        - name: devops-challenge
+        - name: {{ .Release.Name }}-container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: {{ .Values.service.targetPort }}
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsUser: {{ .Values.podSecurity.runAsUser }}
-            runAsNonRoot: {{ .Values.podSecurity.runAsNonRoot }}
-            readOnlyRootFilesystem: {{ .Values.podSecurity.readOnlyRootFilesystem }}
-            capabilities:
-              add:
-{{ toYaml .Values.podSecurity.capabilities.add | indent 16 }}
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
-      volumes:
-        - name: tmp
-          emptyDir: {}
+            - containerPort: 80
