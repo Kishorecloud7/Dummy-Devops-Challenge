@@ -3,7 +3,15 @@
 <h1> DevOps Challenge — Secure-Boot Initiative </h1>
 
 <h2>Scenario</h2> 
-You are the first DevOps Engineer at a security-first software startup. The development team has created a minimal Python API. Your objective is to containerize this application, provision the necessary infrastructure, deploy it using modern standards, and automate the build process. 
+
+* You are the First DevOps Engineer at a Security-First Software startup. The Development team has created a Minimal Python API.
+
+ <h2>Objective </h2>
+
+* To Containerize the Given application, 
+* Provision the necessary infrastructure, 
+* Deploy it using modern standards, and 
+* Automate the build process. 
 
 
 <h2> Prerequisites </h2>
@@ -17,14 +25,14 @@ You are the first DevOps Engineer at a security-first software startup. The deve
 
 <h2> Quick start (local) </h2>
 
-<h3>1. Build, provision and deploy:</h3>
+<h3>1. Build, Provision and Deploy:</h3>
 
 ```
 chmod +x setup.sh system-checks.sh
 ./setup.sh
 ```
 
-<h3>2. Run validation:</h3>
+<h3>2. Run Validation:</h3>
 
 ```
 ./system-checks.sh
@@ -69,7 +77,7 @@ system-checks output
 
 ---
 
-<h2> 3. How to run (step by step) </h2>
+<h2> 3. How to Run (step by step) </h2>
 
 1. Ensure you have Docker and kubectl pointing to a local cluster (kind/minikube/Docker Desktop). If you use kind:
 
@@ -77,7 +85,7 @@ system-checks output
    - `kind create cluster`
 ```
 
-2. Build & deploy:
+2. Build & Deploy:
 
 ```
    - `chmod +x setup.sh system-checks.sh`
@@ -92,11 +100,11 @@ system-checks output
 
 <h2> Conclusion </h2>
 
-* This repository showcases my ability to design and implement a fully automated, secure, and production-oriented DevOps pipeline.  
+* This Repository showcases my ability to Design and Implement a fully Automated, Secure, and Production-oriented DevOps pipeline.  
 
 * Every part of the challenge — from running a non-root container on port 80, enforcing Kubernetes security standards, using Terraform for infrastructure as code, and setting up CI — is implemented with clarity and scalability in mind.
 
-* The project demonstrates not just technical execution, but also an understanding of DevOps principles such as automation, security-by-default, reproducibility, and observability.  
+* The Project demonstrates not just Technical execution, but also an understanding of DevOps Principles such as Automation, Security-by-default, Reproducibility, and Observability.  
 
-* I am confident that the patterns used here can be extended into real-world production environments and improved further with monitoring, alerting, and GitOps practices.
+* I am Confident that the patterns used here can be extended into Real- world Production environments and improved further with Monitoring, Alerting, and GitOps practices.
 
