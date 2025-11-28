@@ -13,7 +13,6 @@ spec:
       labels:
         app: devops-challenge
     spec:
-      # Pod-level security context if desired
       containers:
         - name: devops-challenge
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -26,7 +25,8 @@ spec:
             runAsNonRoot: {{ .Values.podSecurity.runAsNonRoot }}
             readOnlyRootFilesystem: {{ .Values.podSecurity.readOnlyRootFilesystem }}
             capabilities:
-              add: {{ toYaml .Values.podSecurity.capabilities.add | nindent 14 }}
+              add:
+{{ toYaml .Values.podSecurity.capabilities.add | indent 16 }}
           volumeMounts:
             - name: tmp
               mountPath: /tmp
