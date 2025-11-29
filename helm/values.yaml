@@ -1,8 +1,10 @@
 replicas: 2
 
 image:
-  repository: devops-challenge
-  tag: latest
+  repository: devops-challenge-image
+  tag: local
+  pullPolicy: Never
+
 
 service:
   type: ClusterIP
