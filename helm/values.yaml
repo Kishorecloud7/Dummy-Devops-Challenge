@@ -5,7 +5,6 @@ image:
   tag: local
   pullPolicy: Never
 
-
 service:
   type: ClusterIP
   port: 80
