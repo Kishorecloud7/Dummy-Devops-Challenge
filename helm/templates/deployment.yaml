@@ -1,22 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-app
+  name: devops-challenge
   labels:
-    app: {{ .Release.Name }}
+    app: devops-challenge
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: devops-challenge
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}
+        app: devops-challenge
     spec:
       containers:
-        - name: {{ .Release.Name }}-container
+        - name: devops-challenge
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - containerPort: 8000
+          env:
+            - name: ENV
+              value: "production"
