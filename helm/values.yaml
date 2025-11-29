@@ -1,15 +1,8 @@
-replicaCount: 1
-
 image:
   repository: devops-challenge-image
   tag: local
   pullPolicy: Never
-
+replicaCount: 1
 service:
   type: ClusterIP
   port: 80
-
-resources: {}
-nodeSelector: {}
-tolerations: []
-affinity: []
